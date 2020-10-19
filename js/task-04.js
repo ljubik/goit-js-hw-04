@@ -1,35 +1,43 @@
 // Завдання 4
-// Задача 3-4
-// Суммирование значений свойств объекта
-// Напиши функцию countTotalSalary(employees) принимающую объект зарплат.
-// Функция считает общую сумму зарплаты работников и возвращает ее.
-// Каждое поле объекта, передаваемого в функцию, имеет вид "имя":"зарплата".
+// Задача 4-4
+// this в методах объекта
+// Расставь отсутствующие this в методах объекта account.
+
+// В комментариях показаны операции с объектом и ожидаемые результаты.
 
 // Здано:
-const countTotalSalary = function (employees) {
-	"use strict"
-	// Write code under this line
-	let sum = 0
-	for (let salary of Object.values(employees)) {
-		sum += salary
-	}
+const account = {
+	owner: 'Mango',
+	balance: 24000,
+	discount: 0.1,
+	orders: ['order-1', 'order-2', 'order-3'],
+	changeDiscount(value) {
+	  this.discount = value; // Write code in this line
+	},
+	showOrders() {
+	  return this.orders; // Write code in this line
+	},
+	addOrder(cost, order) {
+	  this.balance -= cost; // Write code in this line
+	  this.orders.push(order); // Write code in this line
+	},
+  };
+  const copyAccount =  Object.assign({},account);
+  copyAccount.orders = [...account.orders];
+  // копируем для автотестов ссылочные типы
+  
+  /*
+  account.changeDiscount(0.15);
+  //console.log(account.discount); // 0.15
+  
+  //console.log(account.showOrders()); 
+  // ['order-1', 'order-2', 'order-3']
+  
+  account.addOrder(5000, 'order-4');
+  //console.log(account.balance); // 19000
+  
+  //console.log(account.showOrders());
+  // ['order-1', 'order-2', 'order-3', 'order-4']
+  */
 
-	return sum
-}
-
-// Объекты и ожидаемый результат
-const developers = {
-	mango: 300,
-	poly: 250,
-	alfred: 450,
-}
-console.log(countTotalSalary(developers))
-// 1000
-
-const supports = {
-	kiwi: 200,
-	lux: 150,
-	chelsy: 150,
-}
-console.log(countTotalSalary(supports))
-// 500
+  //Просто дописать  this в строчках,которые указаны в задании (Write code in this line)
